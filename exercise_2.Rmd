@@ -1,5 +1,5 @@
 ---
-title: "exercise_2.2"
+title: "exercise_2_2"
 author: "Lindsey Greenhill"
 date: "2/3/2021"
 output: pdf_document
@@ -31,11 +31,11 @@ births <- tibble(prop_girls =
 ```
 
 
-```{r}
+```{r 2a, echo=FALSE}
 
 # calculating standard deviation
 
-sd(births$prop_girls)
+sd_actual <- sd(births$prop_girls)
 
 # averaging the proportions above and dividing by the square root of the sample
 # size. So p bar divided by the square root of the number. Dividing by 24
@@ -48,11 +48,52 @@ std_theoretical <- sqrt(avg_birth * (1 - avg_birth) / 24)
 
 ## Problem 2b
 
-```{r}
+```{r 2a, FALSE}
 # use the chi-squared test to do this with 23 df. Finding the upper and lower bound and seeing if the chi squared test above is within these bounds. 
+
+# finding the chi sq test statistic 
+
+chisq <- ((23) * sd_actual^2) / std_theoretical^2
+
+# not really sure what the stuff below is for?
 
 lower_bound <- qchisq(.05/2, df = 23)
 upper_bound <- qchisq(.975, df = 23)
 
+# calculating the p value 
+
+p_val <- 2*pchisq(chisq, df = 23)
+
+# calculating confidence interval
+
+upper_real <- sqrt(23*24^2 / lower_bound)
+lower_real <- sqrt(23*24^2 / upper_bound)
+
 ```
+
+
+## Problem 3
+
+```{r 3a}
+
+sums <- rep(NA, 1000)
+
+for(i in 1:1000){
+  noms <- runif(20, 0, 1)
+  
+  noms_sum <- sum(noms)
+  
+  sums[i] <- noms_sum
+}
+
+# plotting a histogram
+{
+hist(sums, main = "Distribution of 1000 Sims of Draws(0,1)",
+     probability = TRUE, las = 1)
+curve(dnorm(x=x, mean = mean(sums), sd = sd(sums)),
+      col = "steelblue2", lwd = 2, add  = TRUE, yaxt = "n")
+}
+
+```
+
 
