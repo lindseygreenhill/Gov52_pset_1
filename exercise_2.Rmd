@@ -43,12 +43,12 @@ sd_actual <- sd(births$prop_girls)
 
 avg_birth <- mean(births$prop_girls)
 
-std_theoretical <- sqrt(avg_birth * (1 - avg_birth) / 24)
+std_theoretical <- sqrt(avg_birth * (1 - avg_birth) / 3900)
 ```
 
 ## Problem 2b
 
-```{r 2a, FALSE}
+```{r 2a}
 # use the chi-squared test to do this with 23 df. Finding the upper and lower bound and seeing if the chi squared test above is within these bounds. 
 
 # finding the chi sq test statistic 
@@ -71,15 +71,24 @@ lower_real <- sqrt(23*24^2 / upper_bound)
 
 ```
 
+The chi-squared statistic is *`r chisq`*. This value falls within the calculated lower and upper bounds of *`r lower_bound`, `r upper_bound`* and is thus not statistically significant. 
+
 
 ## Problem 3
 
 ```{r 3a}
 
+# creating vector for random draws
+
 sums <- rep(NA, 1000)
 
 for(i in 1:1000){
+  
+  # 20 random numbers between 0 and 1
+  
   noms <- runif(20, 0, 1)
+  
+  # sum of the random draws
   
   noms_sum <- sum(noms)
   
@@ -87,6 +96,9 @@ for(i in 1:1000){
 }
 
 # plotting a histogram
+
+# getting the mean of 
+
 {
 hist(sums, main = "Distribution of 1000 Sims of Draws(0,1)",
      probability = TRUE, las = 1)
@@ -96,4 +108,5 @@ curve(dnorm(x=x, mean = mean(sums), sd = sd(sums)),
 
 ```
 
+write paragraph saying that it is not exactly the same, demonstrated in the mean not being exactly ten. Can be explained by the fact that this is just simulations, the world is not perfect. 
 
