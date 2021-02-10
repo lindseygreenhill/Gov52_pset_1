@@ -65,7 +65,7 @@ The actual standard deviation in this data set is `r sd_actual`. The theoretical
 
 ### Part b
 
-```{r 2a}
+```{r 2b}
 # use the chi-squared test to do this with 23 df. Finding the upper and lower
 # bound and seeing if the chi squared test above is within these bounds.
 
