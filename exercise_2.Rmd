@@ -86,7 +86,7 @@ lower_real <- sqrt(23*sd_actual^2 / upper_bound)
 
 ```
 
-The chi-squared test statistic is *`r chisq`*. At the 95% level with 23 degrees of freedom, this value falls within the calculated lower and upper bounds (*`r lower_bound`, `r upper_bound`*) and is thus not statistically significant. Additionally, the observed standard deviation (`r sd_actual`) is within the calculated range of (`r lower_real`, `r lower_real`). 
+The chi-squared test statistic is **`r chisq`**. At the 95% level with 23 degrees of freedom, this value falls within the calculated lower and upper bounds (**`r lower_bound`, `r upper_bound`**) and is thus not statistically significant. Additionally, the observed standard deviation (`r sd_actual`) is within the calculated range of (`r lower_real`, `r lower_real`). 
 
 
 ## Problem 3
@@ -127,6 +127,6 @@ curve(dnorm(x=x, mean = mean(sums), sd = sd(sums)),
 
 ```
 
-In in a perfect world, the distribution above would be centered at x = ten and have the same shape as the normal curve. However, because the above distribution is just 1,000 simulations, it does not match the the shape of the normal curve exactly. More specifically, it is not perfectly centered. However, the mean is very close to 10 (`r avg_dist`), demonstrating the power of the central limit theorem. 
+In in a perfect world, the distribution above would be centered at x = 10 and have the same shape and spread as the normal curve. However, because the above distribution is just 1,000 simulations, it does not match the the shape of the normal curve exactly. More specifically, it is not perfectly centered as the normal curve is. However, the mean is very close to 10 (`r avg_dist`), demonstrating the power of the central limit theorem. 
 
 
